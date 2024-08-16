@@ -1,9 +1,13 @@
 const express = require('express');
 const path = require("path")
 const { connectToMongoDB } = require("./connection");
+const URL = require("./models/url");
+
+
 const staticRoute = require("./routes/staticRouter");
 const urlRoute = require("./routes/url");
-const URL = require("./models/url");
+const userRoute = require("./routes/user")
+
 
 const app = express();
 
@@ -32,6 +36,7 @@ app.use(express.urlencoded({extended : false}));
 
 app.use("/url", urlRoute);
 app.use("/" , staticRoute);
+app.use("/user" , userRoute);
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
