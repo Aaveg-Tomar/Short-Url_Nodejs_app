@@ -12,6 +12,11 @@ const UrlSchema = new mongoose.Schema({
     },
 
     visitHistory: [{ timestamp: { type: Number } }],
+    // The Object Id is created in the url database of the users
+    createdBy : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'users',
+    }
 },
 
     { timestamp: true }

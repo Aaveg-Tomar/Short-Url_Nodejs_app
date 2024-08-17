@@ -24,7 +24,8 @@ const handleGenerateNewShortURL = async (req, res) => {
     await URL.create({
         shortId: shortID,
         redirectURL: body.url,
-        visitHistory: []
+        visitHistory: [],
+        createdBy : req.user._id, // the user_id that is create during the auth in user is also stored in url database
     });
 
     // send data ont he frontend 
